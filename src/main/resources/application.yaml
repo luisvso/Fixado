@@ -1,3 +1,10 @@
 spring:
   application:
     name: fixando
+
+  config:
+    import: optional:file:./.env[properties]
+
+gemini:
+  api:
+    key: ${GOOGLE_API_KEY}
