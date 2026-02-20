@@ -1,6 +1,5 @@
-package fixando.br.fixando.model;
+package fixando.br.fixando.model.entity;
 
-import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
