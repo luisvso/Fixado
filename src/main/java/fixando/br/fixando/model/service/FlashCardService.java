@@ -13,11 +13,14 @@ public class FlashCardService {
 
     public String generateFlashCards(FlashCardRequest dto){
 
+        // fix 19 fev (O json é case insensitive, na hora de mapear o nome da variavel no flashCardResponse era flashCards e aqui era flashcards,
+        // então dava erro, tem que ser o msm nome)
+
         String prompt = """
                 A partir do texto abaixo, gere %d flashcards para estudo.
                 Retorne APENAS um JSON válido, sem explicações, no seguinte formato:
                 {
-                  "flashcards": [
+                  "flashCards": [
                     { "front": "pergunta aqui", "back": "resposta aqui" }
                   ]
                 } 
