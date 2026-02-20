@@ -1,6 +1,6 @@
 package fixando.br.fixando.model.mapper;
 
-import fixando.br.fixando.model.FlashCard;
+import fixando.br.fixando.model.entity.FlashCard;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Component;
 
