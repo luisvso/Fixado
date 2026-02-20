@@ -1,9 +1,8 @@
 package fixando.br.fixando.dto;
 
-import fixando.br.fixando.model.FlashCard;
+import fixando.br.fixando.model.entity.FlashCard;
 
 import java.util.List;
-import java.util.Map;
 
 public record FlashCardResponse(
         List<FlashCard> flashCards
