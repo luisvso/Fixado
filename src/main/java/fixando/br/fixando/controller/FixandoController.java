@@ -4,6 +4,8 @@ import fixando.br.fixando.dto.FlashCardRequest;
 import fixando.br.fixando.dto.FlashCardResponse;
 import fixando.br.fixando.model.mapper.FlashCardMapper;
 import fixando.br.fixando.model.service.FlashCardService;
+import fixando.br.fixando.model.validation.FlashCardValidation;
+import jakarta.validation.Valid;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -16,16 +18,18 @@ public class FixandoController {
 
     private final FlashCardMapper flashCardMapper;
     private final FlashCardService flashCardService;
+    private final FlashCardValidation flashCardValidation;
 
-    public FixandoController(FlashCardMapper flashCardMapper, FlashCardService flashCardService) {
+    public FixandoController(FlashCardMapper flashCardMapper, FlashCardService flashCardService, FlashCardValidation flashCardValidation) {
         this.flashCardMapper = flashCardMapper;
         this.flashCardService = flashCardService;
+        this.flashCardValidation = flashCardValidation;
     }
 
     @PostMapping("/generate")
-    public ResponseEntity<FlashCardResponse> create(@RequestBody FlashCardRequest flashCardRequest) throws Exception {
+    public ResponseEntity<FlashCardResponse> create(@RequestBody @Valid FlashCardRequest flashCardRequest) throws Exception {
 
-        log.info("Trying to acces the env variable: " +  System.getenv("GOOGLE_API_KEY") );
+       flashCardValidation.valid(flashCardRequest);
 
         String responsePrompt = flashCardService.generateFlashCards(flashCardRequest);
 
